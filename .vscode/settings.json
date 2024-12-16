@@ -1,0 +1,10 @@
+{
+    "json.schemas": [
+        {
+            "fileMatch": [
+              "*.json"
+            ],
+            "url": "https://www.krakend.io/schema/krakend.json"
+          }
+    ]
+}

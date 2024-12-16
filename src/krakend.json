@@ -1,0 +1,39 @@
+{
+  "version": 3,
+  "endpoints": [
+    {
+      "endpoint": "/api/{token}/search/{name}",
+      "method": "GET",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "url_pattern": "/api/{token}/search/{name}",
+          "encoding": "json",
+          "method": "GET",
+          "host": [
+            "https://www.superheroapi.com"
+          ],
+          "disable_host_sanitize": false
+        }
+      ]
+    },
+    {
+      "endpoint": "/uol",
+      "method": "GET",
+      "output_encoding": "no-op",
+      "backend": [
+        {
+          "url_pattern": "/",
+          "encoding": "no-op",
+          "sd": "static",
+          "method": "GET",
+          "disable_host_sanitize": true,
+          "host": [
+            "https://www.uol.com.br"
+          ]
+        }
+      ]
+    }
+  ],
+  "output_encoding": "json"
+}

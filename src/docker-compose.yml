@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  superhero-api:
+    build:
+      context: .
+      dockerfile: SuperHero.Api/Dockerfile
+      args:
+        URL_SUPERHERO: '${URL_SUPERHERO}'
+        TOKEN_SUPERHERO: '${TOKEN_SUPERHERO}'
+    depends_on:
+      - krakend
+    environment:
+      - 'URL_SUPERHERO_API=${URL_SUPERHERO}'
+      - 'TOKEN_SUPERHERO_API=${TOKEN_SUPERHERO}'
+    ports:
+      - '8003:8080'
+    networks:
+      - krakend-network
+  krakend:
+    image: devopsfaith/krakend
+    ports:
+      - '8080:8080'
+    volumes:
+      - './krakend.json:/etc/krakend/krakend.json'
+    networks:
+      - krakend-network
+networks:
+  krakend-network:
+    driver: bridge

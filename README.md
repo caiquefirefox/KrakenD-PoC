@@ -29,7 +29,7 @@ A PoC consiste em uma aplicação .NET 9 que expõe um endpoint para buscar info
     Application__Host=<URL da aplicação>
     ```
 
-    Substitua `<URL do KrakenD>` pela URL da API pública (http://host.docker.internal:8080/api) e `<Token para acessar essa API>` pelo token gerado ao registrar-se na SuperHeroAPI.
+    Substitua `<URL da API onde vamos bater>` pela URL do KrakenD (http://host.docker.internal:8080/api), `<Token para acessar essa API>` pelo token gerado ao registrar-se na SuperHeroAPI e `<URL da aplicação>` pela URL da API (https://host.docker.internal:8003).
 
 2. Certifique-se de que o arquivo `.env` seja referenciado corretamente pelo Docker Compose.
 

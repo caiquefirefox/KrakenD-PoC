@@ -24,8 +24,9 @@ A PoC consiste em uma aplicação .NET 9 que expõe um endpoint para buscar info
 1. **Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis de ambiente:**
 
     ```env
-    URL_SUPERHERO=<URL da API onde vamos bater>
-    TOKEN_SUPERHERO=<Token para acessar essa API>
+    HeroApiOptions__Host=<URL da API onde vamos bater>
+    HeroApiOptions__Token=<Token para acessar essa API>
+    Application__Host=<URL da aplicação>
     ```
 
     Substitua `<URL do KrakenD>` pela URL da API pública (http://host.docker.internal:8080/api) e `<Token para acessar essa API>` pelo token gerado ao registrar-se na SuperHeroAPI.

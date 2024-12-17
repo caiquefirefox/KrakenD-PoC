@@ -6,10 +6,6 @@ EXPOSE 8080
 # Esta fase é usada para compilar o projeto de serviço
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
-ARG URL_SUPERHERO
-ARG TOKEN_SUPERHERO
-ENV URL_SUPERHERO_API=$URL_SUPERHERO
-ENV TOKEN_SUPERHERO_API=$TOKEN_SUPERHERO
 WORKDIR /src
 
 COPY ["SuperHero.Api/SuperHero.Api.csproj", "SuperHero.Api/"]
@@ -28,6 +24,4 @@ RUN dotnet publish "SuperHero.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publis
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENV URL_SUPERHERO_API=$URL_SUPERHERO
-ENV TOKEN_SUPERHERO_API=$TOKEN_SUPERHERO
 ENTRYPOINT ["dotnet", "SuperHero.Api.dll"]

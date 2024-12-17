@@ -1,0 +1,33 @@
+{
+  "version": 3,
+  "endpoints": [
+    {
+      "endpoint": "/openapi/{documentName}.json",
+      "method": "GET",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "host": [
+            "https://host.docker.internal:8003"
+          ],
+          "url_pattern": "/openapi/{documentName}.json",
+          "method": "GET"
+        }
+      ]
+    },
+    {
+      "endpoint": "api/SuperHero/{name}",
+      "method": "GET",
+      "output_encoding": "json",
+      "backend": [
+        {
+          "host": [
+            "https://host.docker.internal:8003"
+          ],
+          "url_pattern": "api/SuperHero/{name}",
+          "method": "GET"
+        }
+      ]
+    }
+  ]
+}

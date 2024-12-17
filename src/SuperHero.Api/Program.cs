@@ -1,27 +1,32 @@
 using SuperHero.Api.IoC;
+using SuperHero.Service.Infra;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddEnvironmentVariables();
 
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddOpenApi();
-builder.Services.ConfigApi();
+builder.Services.ConfigApi(builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+app.MapOpenApi();
 
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Registrar o evento para gerar o arquivo krakend.json após a aplicação iniciar
+var lifetime = app.Lifetime;
+lifetime.ApplicationStarted.Register(() =>
+{
+    var configGenerator = app.Services.GetRequiredService<IKrakenDConfigGenerator>();
+    configGenerator.GenerateConfig();
+});
 
 app.Run();

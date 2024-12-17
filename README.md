@@ -1,6 +1,6 @@
 # 🐙 KrakenD-PoC 🚀
 
-Este projeto é uma prova de conceito (PoC) para demonstrar a configuração e uso do [KrakenD](https://www.krakend.io/), um API Gateway de alto desempenho e código aberto.
+Este projeto é uma prova de conceito (PoC) que demonstra como gerar automaticamente o arquivo de configuração JSON do [KrakenD](https://www.krakend.io/) com todos os endpoints de uma aplicação, facilitando a integração e manutenção de APIs.
 
 ## 📝 Descrição
 
@@ -11,7 +11,7 @@ A PoC consiste em uma aplicação .NET 9 que expõe um endpoint para buscar info
 ## 📁 Estrutura do Projeto
 
 - `src/`: Contém o código-fonte da aplicação .NET 9.
-- `krakend.json`: Arquivo de configuração do KrakenD.
+- `krakend.json`: Arquivo de configuração do KrakenD gerado automaticamente.
 - `docker-compose.yml`: Arquivo para orquestração dos serviços usando Docker Compose.
 
 ## ⚙️ Pré-requisitos
@@ -24,11 +24,12 @@ A PoC consiste em uma aplicação .NET 9 que expõe um endpoint para buscar info
 1. **Crie um arquivo `.env` na raiz do projeto com as seguintes variáveis de ambiente:**
 
     ```env
-    URL_SUPERHERO=<URL da API onde vamos bater>
-    TOKEN_SUPERHERO=<Token para acessar essa API>
+    HeroApiOptions__Host=<URL da API onde vamos bater>
+    HeroApiOptions__Token=<Token para acessar essa API>
+    Application__Host=<URL da aplicação>
     ```
 
-    Substitua `<URL do KrakenD>` pela URL da API pública (http://host.docker.internal:8080/api) e `<Token para acessar essa API>` pelo token gerado ao registrar-se na SuperHeroAPI.
+    Substitua `<URL da API onde vamos bater>` pela URL do KrakenD (http://host.docker.internal:8080/api), `<Token para acessar essa API>` pelo token gerado ao registrar-se na SuperHeroAPI e `<URL da aplicação>` pela URL da API (https://host.docker.internal:8003).
 
 2. Certifique-se de que o arquivo `.env` seja referenciado corretamente pelo Docker Compose.
 

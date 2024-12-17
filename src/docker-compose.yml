@@ -4,14 +4,12 @@ services:
     build:
       context: .
       dockerfile: SuperHero.Api/Dockerfile
-      args:
-        URL_SUPERHERO: '${URL_SUPERHERO}'
-        TOKEN_SUPERHERO: '${TOKEN_SUPERHERO}'
     depends_on:
       - krakend
     environment:
-      - 'URL_SUPERHERO_API=${URL_SUPERHERO}'
-      - 'TOKEN_SUPERHERO_API=${TOKEN_SUPERHERO}'
+      - 'HeroApiOptions__Host=${HeroApiOptions__Host}'
+      - 'HeroApiOptions__Token=${HeroApiOptions__Token}'
+      - 'Application__Host=${Application__Host}'
     ports:
       - '8003:8080'
     networks:

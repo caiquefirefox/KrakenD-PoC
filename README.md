@@ -1,6 +1,6 @@
 # 🐙 KrakenD-PoC 🚀
 
-Este projeto é uma prova de conceito (PoC) para demonstrar a configuração e uso do [KrakenD](https://www.krakend.io/), um API Gateway de alto desempenho e código aberto.
+Este projeto é uma prova de conceito (PoC) que demonstra como gerar automaticamente o arquivo de configuração JSON do [KrakenD](https://www.krakend.io/) com todos os endpoints de uma aplicação, facilitando a integração e manutenção de APIs.
 
 ## 📝 Descrição
 
@@ -11,7 +11,7 @@ A PoC consiste em uma aplicação .NET 9 que expõe um endpoint para buscar info
 ## 📁 Estrutura do Projeto
 
 - `src/`: Contém o código-fonte da aplicação .NET 9.
-- `krakend.json`: Arquivo de configuração do KrakenD.
+- `krakend.json`: Arquivo de configuração do KrakenD gerado automaticamente.
 - `docker-compose.yml`: Arquivo para orquestração dos serviços usando Docker Compose.
 
 ## ⚙️ Pré-requisitos
